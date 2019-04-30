@@ -18,34 +18,55 @@ def menu_customer():
    
 ]
     while True:
-        answers = inquirer.prompt(questions)
-        if answers["customer_menu"] == OPTION_1:
-            customer.check_balance(customer_code)
-        elif answers["customer_menu"] == OPTION_2:
-            amount = float(input("Meblegi daxil edin: "))
-            customer.add_money(customer_code,amount)
-        elif answers["customer_menu"] == OPTION_5:
-            print(f"{customer_profile[1]} {customer_profile[2]} sagolun!")
-            break
+        try:
+            answers = inquirer.prompt(questions)
+            if answers["customer_menu"] == OPTION_1:
+                customer.check_balance(customer_code)
+            elif answers["customer_menu"] == OPTION_2:
+                amount = float(input("Meblegi daxil edin: "))
+                customer.add_money(customer_code,amount)
+            elif answers["customer_menu"] == OPTION_3:
+                amount = float(input("Meblegi daxil edin: "))
+                customer.withdraw(customer_code,amount)
+            elif answers["customer_menu"] == OPTION_4:
+                sender_code = input("Oz mushteri kodunuz: ")
+                receiver_code = input("Gonderdiyiniz mushteri kodu: ")
+                amount = float(input("Meblegi daxil edin: "))
+                customer.send_money(sender_code,receiver_code,amount)
+            elif answers["customer_menu"] == OPTION_5:
+                print(f"{customer_profile[1]} {customer_profile[2]} sagolun!")
+                break
+        except:
+            print("ERROR")
 
+
+def validate_user():
+    answer = int(input("iyirmi iki ustegel 2: "))
+    if answer == 24:
+        login()
+    else:
+        return
 
 
 def login():
     global customer_code
     global my_profile
-    global customers
+    count = 0    
     print('\t\t  login')
-    while True:
+    while count < 3:
         customer_code = input("\t mushteri kodu: ")
         my_profile = customer.user_exists(customer_code)
-        if customer_code is not customers:
-            print("Hello")
         if my_profile is not None:
             menu_customer()
             break
         else:
+            count+=1
             print("Bele mushteri movcud deyil!")
+    if count == 3:
+        validate_user()
 login()
+
+
 
     
 

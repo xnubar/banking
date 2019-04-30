@@ -39,10 +39,11 @@ def add_money(customer_code,money):
 
     for i in range(1,len(list_c)):
         customer = list_c[i].split(",")
-        if customer[0] == customer_code:
+        if customer[0] == customer_code and money>0:
             amount = float(customer[3]) + money
             customer[3] = str(amount)
             list_c[i] = ",".join(customer)
+            print(f"Balansiniza {money} azn elave olundu. Cari balansiniz: {amount} azn.")
 
     fileio.write("customers.csv",list_c)
 
@@ -57,6 +58,8 @@ def withdraw(customer_code,money):
                 amount = float(customer[3]) - money
                 customer[3] = str(amount)
                 list_b[i] = ",".join(customer)
+                print(f"Balansinizdan {money} azn chixildi. Cari balansiniz: {amount} azn.")
+
     
     fileio.write("customers.csv",list_b)
 
