@@ -4,6 +4,7 @@ import inquirer
 customer_code = '1234'
 customer_profile = customer.user_exists(customer_code)
 
+
 def menu_customer():
     OPTION_1 = "1: Balansini yoxla"
     OPTION_2 = "2: Balansina pul elave et"
