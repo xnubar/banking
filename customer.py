@@ -1,4 +1,3 @@
-# line = (line[1:].split(","))
 def check_balance(customer_code):    
         with open('customers.csv', 'r') as f:
             customers = f.readlines()   
