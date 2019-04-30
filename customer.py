@@ -3,12 +3,11 @@ import fileio
 def user_exists(customer_code):
     filename = "customers.csv"
     customers = fileio.read(filename)
-    customer = ""
     for i in customers:
             customer = i.split(",")
             if customer[0] == customer_code:
                     return customer
-    return customer
+    return None
 
 
       
@@ -61,9 +60,6 @@ def withdraw(customer_code,money):
     
     fileio.write("customers.csv",list_b)
 
-
-                
-
 def send_money(sender_code,receiver_code,amount):
     filename = "customers.csv"
     customers = fileio.read(filename)
@@ -76,3 +72,4 @@ def send_money(sender_code,receiver_code,amount):
         if sender_new_balance >= 0:
                 add_money(receiver[0],amount)
                 withdraw(receiver[0],amount)
+
