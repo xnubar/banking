@@ -21,12 +21,13 @@ def send_money(sender_code,receiver_code,amount):
     receiver =  user_exists(receiver_code)
    
     if  sender and  receiver:
+
         sender_customer = [sender[k] for k in sender][0]
         receiver_customer = [receiver[k] for k in receiver][0]
 
         sender_id = [k for k in sender.keys()][0]
         receiver_id = [k for k in receiver.keys()][0]
-
+        
         sender_new_balance = float(sender_customer[3]) - amount
         receiver_new_balance = float(receiver_customer[3]) +amount
         if sender_new_balance >= 0:
