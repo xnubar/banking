@@ -4,6 +4,8 @@ def write(filename,list_):
             fw.write(i.strip())
             if list_.index(i)!=len(list_)-1:
                 fw.write("\n")
+
+
             
 
 
