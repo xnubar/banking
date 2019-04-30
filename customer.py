@@ -7,23 +7,19 @@ def user_exists(customer_code):
     for i in customers:
             customer = i.split(",")
             if customer[0] == customer_code:
-                    return {customers.index(i):customer}
+                    return customer
     return customer
 
 
-
-
-
-        
+      
 def check_balance(customer_code):    
     with open('customers.csv', 'r') as f:
         customers = f.readlines()   
         customers.pop(0) 
-        
         for i in customers:
             customer = i.split(',')
             if customer_code == customer[0]:
-                return customer[3]
+                print(f"{customer[1]} {customer[2]}, balansiniz  {customer[3].split()[0]}"," azn teshkil edir")
 
 
 
@@ -32,13 +28,13 @@ def add_money(customer_code,money):
 
     for i in range(1,len(list_c)):
         customer = list_c[i].split(",")
-        print(customer_code)
         if customer[0] == customer_code:
             amount = float(customer[3]) + money
             customer[3] = str(amount)
             list_c[i] = ",".join(customer)
 
     fileio.write("customers.csv",list_c)
+
 
 def withdraw(customer_code,money):
     list_b=fileio.read("customers.csv")
@@ -54,20 +50,7 @@ def withdraw(customer_code,money):
     fileio.write("customers.csv",list_b)
 
 
-            
-                   
-
-        
-            
-def check_balance(customer_code):    
-    with open('customers.csv', 'r') as f:
-        customers = f.readlines()   
-        customers.pop(0) 
-
-        for i in customers:
-            customer = i.split(',')
-            if customer_code == customer[0]:
-                return customer[3]
+                
 
 def send_money(sender_code,receiver_code,amount):
     filename = "customers.csv"
@@ -77,13 +60,7 @@ def send_money(sender_code,receiver_code,amount):
     receiver =  user_exists(receiver_code)
    
     if  sender and  receiver:
-             
-        sender_customer = [sender[k] for k in sender][0]
-        receiver_customer = [receiver[k] for k in receiver][0]
-        sender_new_balance = float(sender_customer[3]) - amount
+        sender_new_balance = float(sender[3]) - amount
         if sender_new_balance >= 0:
-                add_money(receiver_customer[0],amount)
-                withdraw(sender_customer[0],amount)
-
-                    
-send_money('1234','1235',50)
+                add_money(receiver[0],amount)
+                withdraw(receiver[0],amount)
