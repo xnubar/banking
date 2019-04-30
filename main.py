@@ -30,10 +30,9 @@ def menu_customer():
                 amount = float(input("Meblegi daxil edin: "))
                 customer.withdraw(customer_code,amount,tr.WITHDRAW_MONEY)
             elif answers["customer_menu"] == OPTION_4:
-                sender_code = input("Oz mushteri kodunuz: ")
                 receiver_code = input("Gonderdiyiniz mushteri kodu: ")
                 amount = float(input("Meblegi daxil edin: "))
-                customer.send_money(sender_code,receiver_code,amount)
+                customer.send_money(customer_code,receiver_code,amount)
             elif answers["customer_menu"] == OPTION_5:
                 print(f"{customer_profile[1]} {customer_profile[2]} sagolun!")
                 break

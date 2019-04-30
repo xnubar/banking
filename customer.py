@@ -39,8 +39,9 @@ def add_money(customer_code,money,transaction_type):
             print(f"Balansiniza {money} azn elave olundu. Cari balansiniz: {amount} azn.")
             transaction_txt = f"\n{customer[0]},{transaction_type},{money}"
             transaction.add("transactions.csv",transaction_txt)
-
-    fileio.write("customers.csv",list_c)
+            fileio.write("customers.csv",list_c)
+        else:
+            print(f"{customer[1]} {customer[2]}, emeliyyatchun hesabinizda kifayet qeder pul yoxdur.")
 
 
 def withdraw(customer_code,money,transaction_type):
@@ -55,6 +56,8 @@ def withdraw(customer_code,money,transaction_type):
                 print(f"Balansinizdan {money} azn chixildi. Cari balansiniz: {amount} azn.")
                 transaction_txt = f"\n{customer[0]},{transaction_type},{money}"
                 transaction.add("transactions.csv",transaction_txt)
+            else:
+                print(f"{customer[1]} {customer[2]}, emeliyyatchun hesabinizda kifayet qeder pul yoxdur.")
                 
 
     
@@ -69,9 +72,13 @@ def send_money(sender_code,receiver_code,amount):
    
     if  sender and  receiver:
         sender_new_balance = float(sender[3]) - amount
-        if sender_new_balance >= 0:
+        if sender_new_balance >= 0 and sender_code != receiver_code:
                 sender_transaction_txt = transaction.WITHDRAW_MONEY+"," + receiver[0]
                 receiver_transaction_txt = transaction.ADD_MONEY + "," + sender[0]
                 add_money(receiver[0],amount,receiver_transaction_txt)
                 withdraw(sender[0],amount,sender_transaction_txt)
+        elif sender_new_balance < 0:
+                print(f"{customer[1]} {customer[2]}, emeliyyatchun hesabinizda kifayet qeder pul yoxdur.")
+        elif sender_code == receiver_code:
+                print("Pul gondereceyiniz mushteri kodu dogru deyil.")
 
