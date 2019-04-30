@@ -1,5 +1,6 @@
 import customer
 import inquirer
+import transaction as tr
 
 customer_code = '1234'
 customer_profile = customer.user_exists(customer_code)
@@ -24,10 +25,10 @@ def menu_customer():
                 customer.check_balance(customer_code)
             elif answers["customer_menu"] == OPTION_2:
                 amount = float(input("Meblegi daxil edin: "))
-                customer.add_money(customer_code,amount)
+                customer.add_money(customer_code,amount,tr.ADD_MONEY)
             elif answers["customer_menu"] == OPTION_3:
                 amount = float(input("Meblegi daxil edin: "))
-                customer.withdraw(customer_code,amount)
+                customer.withdraw(customer_code,amount,tr.WITHDRAW_MONEY)
             elif answers["customer_menu"] == OPTION_4:
                 sender_code = input("Oz mushteri kodunuz: ")
                 receiver_code = input("Gonderdiyiniz mushteri kodu: ")

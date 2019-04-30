@@ -1,2 +1,4 @@
 customer_code,operation_name,amount
 1234,hesabdan pul chekdi,100
+1235,Balansa mebleg elave olundu,1234,10.0
+1234,Balansdan mebleg chixildi,1235,10.0
