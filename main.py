@@ -17,17 +17,30 @@ def menu_customer():
    
 ]
     while True:
-        answers = inquirer.prompt(questions)
-        if answers["customer_menu"] == OPTION_1:
-            customer.check_balance(customer_code)
-        elif answers["customer_menu"] == OPTION_2:
-            amount = float(input("Meblegi daxil edin: "))
-            customer.add_money(customer_code,amount)
-        elif answers["customer_menu"] == OPTION_5:
-            print(f"{customer_profile[1]} {customer_profile[2]} sagolun!")
-            break
+        try:
+            answers = inquirer.prompt(questions)
+            if answers["customer_menu"] == OPTION_1:
+                customer.check_balance(customer_code)
+            elif answers["customer_menu"] == OPTION_2:
+                amount = float(input("Meblegi daxil edin: "))
+                customer.add_money(customer_code,amount)
+            elif answers["customer_menu"] == OPTION_3:
+                amount = float(input("Meblegi daxil edin: "))
+                customer.withdraw(customer_code,amount)
+            elif answers["customer_menu"] == OPTION_4:
+                sender_code = input("Oz mushteri kodunuz: ")
+                receiver_code = input("Gonderdiyiniz mushteri kodu: ")
+                amount = float(input("Meblegi daxil edin: "))
+                customer.send_money(sender_code,receiver_code,amount)
+            elif answers["customer_menu"] == OPTION_5:
+                print(f"{customer_profile[1]} {customer_profile[2]} sagolun!")
+                break
+        except:
+            print("ERROR")
 
 
 menu_customer()
+
+
     
 
