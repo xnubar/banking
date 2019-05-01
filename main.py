@@ -39,8 +39,23 @@ def menu_customer():
             print("ERROR")
 
 
-menu_customer()
 
+
+
+def login():
+    global customer_code
+    global my_profile
+    global customers
+    print('\t\t  login')
+    while True:
+        customer_code = input("\t mushteri kodu: ")
+        my_profile = customer.user_exists(customer_code)
+        if my_profile is not None:
+            menu_customer()
+            break
+        else:
+            print("Bele mushteri movcud deyil!")
+login()
 
     
 
