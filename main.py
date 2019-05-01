@@ -40,16 +40,12 @@ def menu_customer():
             print("ERROR")
 
 
-<<<<<<< HEAD
-
-=======
 def validate_user():
     answer = int(input("iyirmi iki ustegel 2: "))
     if answer == 24:
         login()
     else:
         return
->>>>>>> 7475a85a5f7bbe081e1524777abb48d6128e891a
 
 
 def login():
@@ -69,11 +65,7 @@ def login():
     if count == 3:
         validate_user()
 login()
-<<<<<<< HEAD
-=======
 
-
->>>>>>> 7475a85a5f7bbe081e1524777abb48d6128e891a
 
     
 

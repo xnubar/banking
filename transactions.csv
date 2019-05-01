@@ -1,4 +1,14 @@
 customer_code,operation_name,amount
 1234,hesabdan pul chekdi,100
-1235,Balansa mebleg elave olundu,1234,10.0
-1234,Balansdan mebleg chixildi,1235,10.0
+1235,Balansa mebleg elave olundu,10.0
+1235,Balansdan mebleg chixildi,510.0
+1235,Balansdan mebleg chixildi,100.0
+1235,Balansa mebleg elave olundu,100.0
+1235,Balansa mebleg elave olundu,100.0
+1235,Balansdan mebleg chixildi,100.0
+1234,Balansa mebleg elave olundu,1235,90.0
+1235,Balansdan mebleg chixildi,1234,90.0
+1234,Balansa mebleg elave olundu,5.0
+1234,Balansdan mebleg chixildi,90.0
+1235,Balansa mebleg elave olundu,1234,50.0
+1234,Balansdan mebleg chixildi,1235,50.0
